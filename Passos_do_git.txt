@@ -1,11 +1,12 @@
-Comandos de utilizaÁ„o git bash 
+Comandos de utiliza√ß√£o git bash 
 
 git clone <link>
 cd <caminho> 
 cd // sem o caminho, ele retorna o caminho
-ApÛs acessar o diretorio via master: 
+ls // arquivos localizados no diretorio
+Ap√≥s acessar o diretorio via master: 
 vi <nome do arquivo>
-git status // checa se o arquivo est· sendo utilizado ou n„o, se n„o utilizar comando git add * e ent„o utilizar status novamente
+git status // checa se o arquivo est√° sendo utilizado ou n√£o, se n√£o utilizar comando git add * e ent√£o utilizar status novamente
 git add * //especifique o arquivo, ou utilize * para todos os arquivos 
-git commit -m "<comentar seu nome e suas alteraÁıes do dia>"
+git commit -m "<comentar seu nome e suas altera√ß√µes do dia>"
 git push origin master // Colocar seu login e senha do github OBS: a senha ficara invisivel 
