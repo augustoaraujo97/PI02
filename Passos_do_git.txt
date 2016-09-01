@@ -4,6 +4,7 @@ git clone <link>
 cd <caminho> 
 cd // sem o caminho, ele retorna o caminho
 ls // arquivos localizados no diretorio
+qit checkout <nome do branch> // mudar o branch, utilize o de desenvolvimento
 Após acessar o diretorio via master: 
 vi <nome do arquivo>
 git status // checa se o arquivo está sendo utilizado ou não, se não utilizar comando git add * e então utilizar status novamente
