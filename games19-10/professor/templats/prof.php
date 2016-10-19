@@ -60,6 +60,7 @@
 								<td class="cmNome"><strong>Nome</strong></td>
 								<td class="cmEmail"><strong>Email</strong></td>
 								<td class="cmID"><strong>ID</strong></td>
+								<td class="cmTipo"><strong>Tipo</strong></td>
 								<td colspan="2"><strong>Ações</strong></td>
 							</tr>
 						</thead>
@@ -72,6 +73,7 @@
 											<td class='cmNome'>{$value['nome']}</td>
 											<td class='cmEmail'>{$value['email']}</td>
 											<td class='cmID'>{$value['idSenac']}</td>
+											<td class='cmTipo'>{$value['tipo']}</td>
 											<td><a href='?dcod={$campo}' class='adel'>Deletar</a></td>
 											<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>
 										</tr>" ;

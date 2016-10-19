@@ -47,6 +47,7 @@ if(isset($_POST['btnPesquisar'])) {
 }
 
 // ---------------------------------------------------------- GRADES ---------------------------------------------------------------------
+//AREA
 $queryArea = odbc_exec($db, "SELECT
 								codArea,
 								descricao
@@ -54,6 +55,12 @@ $queryArea = odbc_exec($db, "SELECT
 								Area");
 while($resultArea = odbc_fetch_array($queryArea)){
 	$areas[$resultArea['codArea']] = utf8_encode($resultArea['descricao']);
+}
+
+while($result = odbc_fetch_array($query)){
+	$assuntos[$result['codAssunto']]['assdescricao'] = utf8_encode($result['assdescricao']);
+	$assuntos[$result['codAssunto']]['codArea'] = $result['codArea'];
+	$assuntos[$result['codAssunto']]['ardescricao'] = utf8_encode($result['ardescricao']);
 }
 // --------------------------------------------------------------------------DELETE--------------------------------------------------------------------------
 if(isset($_GET['dcod'])){

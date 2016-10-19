@@ -23,6 +23,22 @@ while($result = odbc_fetch_array($query)){
 	
 
 }
+// -------------------------------------------------------- DELETE -------------------------------------------------
+if(isset($_GET['dcod'])){
+	if(is_numeric($_GET['dcod'])){
+			if(!odbc_exec($db, "DELETE FROM 
+									Professor 
+								WHERE 
+									codProfessor =".$_GET['dcod'])){
+				$msg = "Não foi possivel apagar o dado";
+			}else{
+				header("Location: index.php");
+			}
+	}else{
+		$msg = "ERRO : ID não valido";
+	}
+}
+// ---------------------------------------- FIM DELETE ---------------------------------------------------------------
 
 	include("templats/prof.php");
 ?>

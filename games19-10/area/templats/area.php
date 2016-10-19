@@ -47,12 +47,12 @@
 				</form>
 				<!--- campo de inclusão -->
 			</section><!-- form-content - Fim -->
-			<!----- COMEÇO DO LIGHTBOX ------------------->
+			<!----- COMEÇO DO LIGHTBOX DE INSERÇÃO ---------------------------------------------------------------------------------------------->
 			<div class="background"></div>
 			<div class="box">
 			<div><img src="../img/close.png" class="close" width="30" height="30"></div>
 				<div id="crudArea">
-					<h3>Inserir Assunto </h3>
+					<h3>Inserir uma área </h3>
 					<form id="frmarea-crud" method="post">
 						<label class="label-default">Descrição</label>
 						<input type="text" name="txtInclude"  class="style-input-default" />
@@ -60,7 +60,21 @@
 					</form>	
 				</div>
 			</div>
-			<!---------------------------- FIM LIGHTBOX---------------->
+			<!---------------------------- FIM LIGHTBOX INSERÇÃO ------------------------------------------------------------------------->
+			<!----- COMEÇO DO LIGHTBOX UPDATE ---------------------------------------------------------------------------------------------->
+			<div class="background"></div>
+			<div class="box">
+			<div><img src="../img/close.png" class="close" width="30" height="30"></div>
+				<div id="crudArea">
+					<h3>Atualizar uma área  </h3>
+					<form id="frmarea-crud" method="post">
+						<label class="label-default">Descrição</label>
+						<input type="text" name="txtInclude"  class="style-input-default" />
+						<input type="submit" name="btnInclude" class="btArea" value="Enviar" />
+					</form>	
+				</div>
+			</div>
+			<!---------------------------- FIM LIGHTBOX UPDATE---------------------------------------------------------------------------------------------->
 			<div id="area-content">
 				<table>
 					<thead>

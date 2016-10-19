@@ -82,14 +82,14 @@
 					</thead>
 					<tbody>
 						<?php 
-								while($result = odbc_fetch_array($query)){
+								foreach($assuntos as $campo => $valor){
 								echo "
 									<tr>
-										<td class='cmcodigo'>{$result['codAssunto']}</td>
-										<td class='cmdescricao1'>".utf8_encode($result['assdescricao'])."</td>
-										<td class='cmdescricao2'>".utf8_encode($result['ardescricao'])."</td>
-										<td><a href='?dcod={$result['codAssunto']}' class='adel'>Deletar</a></td>
-										<td><a href='?ecod={$result['codAssunto']}' class='aedit'>Editar</a></td>
+										<td class='cmcodigo'>{$campo}</td>
+										<td class='cmdescricao1'>".$valor['assdescricao']."</td>
+										<td class='cmdescricao2'>".$valor['ardescricao']."</td>
+										<td><a href='?dcod={$campo}' class='adel'>Deletar</a></td>
+										<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>
 									</tr>";
 							}
 						?>

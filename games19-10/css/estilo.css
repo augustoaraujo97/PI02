@@ -323,7 +323,10 @@ thead {
 	width:33%;
 }
 .cmID{
-	width:11%;
+	width:6%;
+}
+.cmTipo{
+	width:5%;
 }
 
 
@@ -336,7 +339,7 @@ thead {
   left: 0px;
 }
 /*--------------------------------------- Ligh-------------tbox---------------------- */
-.background {
+.background,.backgroundUp {
 	position:fixed;
 	top:0;
 	left:0;
@@ -349,7 +352,7 @@ thead {
 	display:none;
 }
 	
-.box{
+.box,.boxUp{
 	position:absolute;
 	top:20%;
 	left:30%;
@@ -362,7 +365,7 @@ thead {
 	  border-radius: 5px;
 	  background: #ccc;
 }
-.close{
+.close,.closeUp{
 	padding:2px;
 	cursor:pointer;
 }
