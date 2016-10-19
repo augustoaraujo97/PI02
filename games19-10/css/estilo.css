@@ -187,7 +187,8 @@ header {
 #frma #btnNovo,
 #frma #btnPesquisar,
 #frmarea-crud .btArea,
-#frmaAssunto-crud .btArea {
+#frmaAssunto-crud .btArea,
+#frmProf-crud .btArea {
 	-moz-box-shadow: inset 0px 0px 0px 0px #385965;
   -webkit-box-shadow: inset 0px 0px 0px 0px #385965;
   box-shadow: inset 0px 1px 0px 0px #385965;
@@ -312,7 +313,8 @@ thead {
   position: relative;
 }
 #frmaAssunto-crud select {margin-left:13px;padding: 8px 18px;}
-#crudAssunto h3, #crudArea h3{color:#385965;position:relative;font-family: "Roboto", sans-serif;  margin: 0 50px 20px 50px;}
+/* augusto 19/10*/
+#crudAssunto h3, #crudArea h3,#crudProf h3{color:#385965;position:relative;font-family: "Roboto", sans-serif;  margin: 0 50px 20px 50px;}
 #frmaAssunto-crud input[type='submit'] {  position: relative;margin-left:49%;margin-top:25px;}
 /* Fim - Japa */
 /* Pagina de professores */
@@ -338,42 +340,29 @@ thead {
   top: 935px;
   left: 0px;
 }
-/*--------------------------------------- Ligh-------------tbox---------------------- */
-.background,.backgroundUp {
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background-color:#000;
-	opacity:.0;
-	filter:alpha(opacity=0);
-	z-index:100;
-	display:none;
-}
-	
-.box,.boxUp{
-	position:absolute;
-	top:20%;
-	left:30%;
-	z-index:101;
-	border-radius:4px;
-	display:none;
-	margin: 100px auto;
-	  width: 550px;
-	  height: 250px;
-	  border-radius: 5px;
-	  background: #ccc;
-}
-.close,.closeUp{
-	padding:2px;
-	cursor:pointer;
-}
 
-
-/* ------------------------------------------------------- */
 .logoIndex{
 	float:left;
 	margin-left:30%;
 	margin-top:150px;
+}
+/* AUGUSTO 19/10*/
+#frmProf-crud input{
+	position:relative;
+	display:block;
+	margin-left:25%;
+}#frmProf-crud label{
+	position:relative;
+	margin-left:25%;
+}
+#frmProf-crud input[type="radio"]{
+	display:inline;
+	margin:0;
+	padding:0;
+	width:50px;
+}
+#frmProf-crud .btArea{
+	position:relative;
+	margin-left:45%;
+	margin-top:50px;
 }

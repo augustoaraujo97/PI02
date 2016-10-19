@@ -61,20 +61,6 @@
 				</div>
 			</div>
 			<!---------------------------- FIM LIGHTBOX INSERÇÃO ------------------------------------------------------------------------->
-			<!----- COMEÇO DO LIGHTBOX UPDATE ---------------------------------------------------------------------------------------------->
-			<div class="background"></div>
-			<div class="box">
-			<div><img src="../img/close.png" class="close" width="30" height="30"></div>
-				<div id="crudArea">
-					<h3>Atualizar uma área  </h3>
-					<form id="frmarea-crud" method="post">
-						<label class="label-default">Descrição</label>
-						<input type="text" name="txtInclude"  class="style-input-default" />
-						<input type="submit" name="btnInclude" class="btArea" value="Enviar" />
-					</form>	
-				</div>
-			</div>
-			<!---------------------------- FIM LIGHTBOX UPDATE---------------------------------------------------------------------------------------------->
 			<div id="area-content">
 				<table>
 					<thead>
@@ -92,7 +78,7 @@
 										<td class='cmcodigo'>{$campo}</td>
 										<td class='cmdescricao'>{$value}</td>
 										<td><a href='?dcod={$campo}' class='adel'>Deletar</a></td>
-										<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>
+										<td><a href='?ecod={$campo}' class='aedit' class='lightbox'>Editar</a></td>
 									</tr>" ;
 							}
 						?>

@@ -119,7 +119,9 @@ if(isset($_POST['btnAlterar']  )){
 	}
 }
 
-
-include('templats/area.php');	
-
+if(isset($_POST['btnInclude']) || isset($_POST['btnAlterar']) ){
+	include('templats/crudArea.php');	
+}else{
+	include('templats/area.php');	
+}
 ?>
