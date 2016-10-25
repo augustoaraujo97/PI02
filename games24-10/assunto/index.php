@@ -4,7 +4,17 @@ require('../db/db.php');
 
 $msg = '';
 $result = ' ';
-
+// ----------------------------------------------------------------------PAGINA ----------------------------------------------------------------------------
+$query = odbc_exec($db, "SELECT 
+								codAssunto
+							FROM
+								Assunto
+							");
+$num = odbc_num_rows($query);
+$numPagina = ceil($num/10);
+$i = 0;
+if(!isset($_GET['pg']))$pagina = 1;else $pagina = intval($_GET['pg']);
+$limite = (10 * $pagina); 
 // --------------------------------------------------------------------------Pesquisa --------------------------------------------------------------------------
 if(isset($_POST['btnPesquisar'])) {
 	if (!empty($_POST['txtPesquisa'])) {
@@ -20,7 +30,10 @@ if(isset($_POST['btnPesquisar'])) {
 										assunto as ass
 									LEFT JOIN
 										area as ar ON ar.codArea = ass.codArea
-									WHERE ass.descricao LIKE '%$pesquisa%' or ar.descricao LIKE '%$pesquisa%'"); 
+									WHERE ass.descricao LIKE '%$pesquisa%' or ar.descricao LIKE '%$pesquisa%'
+									ORDER BY codAssunto
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY"); 
 			$butt = "<button id='btnVoltar' name='btnVoltar'><a href='index.php'>Voltar</a></button>";
 			
 			
@@ -35,7 +48,10 @@ if(isset($_POST['btnPesquisar'])) {
 									FROM 
 										assunto as ass
 									LEFT JOIN
-										area as ar ON ar.codArea = ass.codArea");
+										area as ar ON ar.codArea = ass.codArea
+									ORDER BY codAssunto
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY");
 	}
 } else {
 	// Valor default
@@ -47,7 +63,10 @@ if(isset($_POST['btnPesquisar'])) {
 									FROM 
 										assunto as ass
 									LEFT JOIN
-										area as ar ON ar.codArea = ass.codArea");
+										area as ar ON ar.codArea = ass.codArea
+									ORDER BY codAssunto
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY");
 }
 
 // ---------------------------------------------------------- GRADES ---------------------------------------------------------------------

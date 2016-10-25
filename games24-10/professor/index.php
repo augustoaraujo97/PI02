@@ -1,5 +1,15 @@
 <?php
 require("../db/db.php");
+// ----------------------------------------------------------------------PAGINA ----------------------------------------------------------------------------
+$query = odbc_exec($db, "SELECT 
+							codProfessor	
+						FROM
+							Professor");
+$num = odbc_num_rows($query);
+$numPagina = ceil($num/10);
+$i = 0;
+if(!isset($_GET['pg']))$pagina = 1;else $pagina = intval($_GET['pg']);
+$limite = (10 * $pagina); 
 	
 // ------------------------------------------------- (PESQUISA)SELECT GRADE PROF -------------------------------
 if(isset($_POST['btnPesquisar'])){
@@ -14,7 +24,10 @@ if(isset($_POST['btnPesquisar'])){
 									tipo
 								FROM
 									Professor
-								WHERE nome LIKE '%$pesquisa%' or email LIKE '%$pesquisa%'");
+								WHERE nome LIKE '%$pesquisa%' or email LIKE '%$pesquisa%'
+								ORDER BY codProfessor
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY");
 
 	$butt = "<button id='btnVoltar' name='btnVoltar'><a href='index.php'>Voltar</a></button>";
 }else{
@@ -25,7 +38,10 @@ if(isset($_POST['btnPesquisar'])){
 								idSenac,
 								tipo
 							FROM
-								Professor");
+								Professor
+							ORDER BY codProfessor
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY");
 }	
 $num = odbc_num_rows($query);							
 while($result = odbc_fetch_array($query)){

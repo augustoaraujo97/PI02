@@ -24,7 +24,8 @@
 			</div>
 
 			<section id="form-content">
-						<?php 
+			<!--------- paginação --->
+			<?php 
 
 				echo " <ul> ";
 					do{
@@ -33,9 +34,6 @@
 					}while($i < $numPagina);
 					
 				echo "</ul>";
-						
-				
-
 			?>
 				<h3>Cadastro da área</h3>
 

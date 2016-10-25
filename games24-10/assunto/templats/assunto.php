@@ -25,6 +25,17 @@
 			</div>
 
 			<section id="form-content">
+			<!------- paginação ---------->
+			<?php 
+
+				echo " <ul> ";
+					do{
+						$i++;
+						echo " <li><a href='?pg=$i'>$i</a></li>";					
+					}while($i < $numPagina);
+					
+				echo "</ul>";
+			?>
 				<h3>Cadastro de assunto</h3>
 
 				<!-- Campo de pesquisa -->	

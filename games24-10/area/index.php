@@ -12,9 +12,11 @@ $query = odbc_exec($db, "SELECT
 								Area
 							");
 $num = odbc_num_rows($query);
-$numPagina = $num%10;
+$numPagina = ceil($num/10);
 $i = 0;
+
 if(!isset($_GET['pg']))$pagina = 1;else $pagina = intval($_GET['pg']);
+
 $limite = (10 * $pagina); 
 
 // --------------------------------------------------------------------Pesquisa --------------------------------------------------------------------
@@ -24,29 +26,35 @@ if(isset($_POST['btnPesquisar'])) {
 			// Criar um função para evitar injection
 
 			$query = odbc_exec($db, "SELECT 
-									TOP $limite
 										codArea, 
 										descricao 
 									FROM 
 										area 
-									WHERE descricao LIKE '%$pesquisa%'" ); 
+									WHERE descricao LIKE '%$pesquisa%'
+									ORDER BY codArea
+										OFFSET $limite-10 ROWS  
+										FETCH NEXT 10 ROWS ONLY" ); 
 			$butt = "<button id='btnVoltar' name='btnVoltar'><a href='index.php'>Voltar</a></button>";
 	} else {
-		$query = odbc_exec($db, 'SELECT 
-								TOP $limite
+		$query = odbc_exec($db, "SELECT 
 									codArea,
 									descricao
 								FROM 
-									Area');
-	}
+									Area
+								ORDER BY codArea
+									OFFSET $limite-10 ROWS  
+									FETCH NEXT 10 ROWS ONLY");
+		}
 } else {
 	// Valor default
 	$query = odbc_exec($db, "SELECT 
-							TOP $limite
 								codArea,
 								descricao
 							FROM 
 								Area
+							ORDER BY codArea
+								OFFSET $limite-10 ROWS  
+								FETCH NEXT 10 ROWS ONLY
 							");
 }
 
