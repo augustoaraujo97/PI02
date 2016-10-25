@@ -20,8 +20,12 @@ if(isset($_POST['btnPesquisar'])) {
 										assunto as ass
 									LEFT JOIN
 										area as ar ON ar.codArea = ass.codArea
-									WHERE descricao LIKE '%$pesquisa%'" ); 
+									WHERE ass.descricao LIKE '%$pesquisa%' or ar.descricao LIKE '%$pesquisa%'"); 
 			$butt = "<button id='btnVoltar' name='btnVoltar'><a href='index.php'>Voltar</a></button>";
+			
+			
+			
+			
 	} else {
 			$query = odbc_exec($db, "SELECT 
 										ass.codAssunto, 
@@ -56,12 +60,13 @@ $queryArea = odbc_exec($db, "SELECT
 while($resultArea = odbc_fetch_array($queryArea)){
 	$areas[$resultArea['codArea']] = utf8_encode($resultArea['descricao']);
 }
-
+$num = odbc_num_rows($query);
 while($result = odbc_fetch_array($query)){
 	$assuntos[$result['codAssunto']]['assdescricao'] = utf8_encode($result['assdescricao']);
 	$assuntos[$result['codAssunto']]['codArea'] = $result['codArea'];
 	$assuntos[$result['codAssunto']]['ardescricao'] = utf8_encode($result['ardescricao']);
 }
+
 // --------------------------------------------------------------------------DELETE--------------------------------------------------------------------------
 if(isset($_GET['dcod'])){
 	if(is_numeric($_GET['dcod'])){

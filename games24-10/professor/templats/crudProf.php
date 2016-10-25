@@ -44,6 +44,7 @@
 											<input type="radio" name="rdTipo" value="A"  class="style-input-default" checked/>Admin';
 									}
 							echo ' <input type="submit" name="btnUpdate" class="btArea" value="Atualizar" />
+									<a href="index.php"><input type="button" name="btnVolt" class="btArea" value="Voltar"/></a>
 								</form>';
 						}else{
 						
@@ -70,6 +71,7 @@
 									<input type="radio" name="rdTipo" value="P"  class="style-input-default" checked />Professor
 									<input type="radio" name="rdTipo" value="A"  class="style-input-default" />Admin
 									<input type="submit" name="btnInclude" class="btArea" value="Enviar" />
+									<a href="index.php"><input type="button" name="btnVolt" class="btArea" value="Voltar" /></a>
 								</form>';
 						}
 					?>

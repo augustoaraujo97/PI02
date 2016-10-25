@@ -21,6 +21,7 @@
 						<input type='text' name='txtDescricao' class='style-input-default' value='".$result['descricao']."' />
 
 						<input type='submit' name='btnAlterar' class='btArea' value='Enviar' />
+						<a href='index.php'><input type='button' name='btnVolt' class='btArea' value='Cancelar'/></a>
 					</form>	";
 				}else{
 					echo"
@@ -30,6 +31,7 @@
 						<input type='text' name='txtInclude' class='style-input-default' placeholder='Digite a area' />
 
 						<input type='submit' name='btnInclude' class='btArea' value='Enviar' />
+						<a href='index.php'><input type='button' name='btnVolt' class='btArea' value='Voltar'/></a>
 					</form>	";
 				
 				}?>

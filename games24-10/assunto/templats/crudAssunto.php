@@ -36,7 +36,9 @@
 							</select>
 							<label class='label-default'>Descrição:</label>
 							<input type='text' name='txtAssuntoUpdate'  class='style-input-default' value='".$result['assdescricao']."'/>
+							
 							<input type='submit' name='btnAssuntoUpdate' class='btArea' value='Enviar' />
+							<a href='index.php'><input type='button' name='btnVolt' class='btArea' value='Cancelar'/></a>
 						</form>";	
 						
 				}else{
@@ -55,6 +57,7 @@
 						<label class='label-default'>Descrição:</label>
 						<input type='text' id='txtAssuntoDesc' name='txtInclude'  class='style-input-default' disabled />
 						<input type='submit' name='btnInclude' class='btArea' value='Enviar' />
+						<a href='index.php'><input type='button' name='btnVolt' class='btArea' value='Voltar'/></a>
 					</form>	"; }?>
 				</div>
 				

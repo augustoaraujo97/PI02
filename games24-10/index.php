@@ -15,6 +15,7 @@
 				  <li><a href="area/index.php" class="nav-item">Area</a></li>
 				  <li><a href="assunto/index.php" class="nav-item">Assunto</a></li>
 				  <li><a href="questao/index.php" class="nav-item">Questão</a></li>
+				  <li><a href="questao/index.php" class="nav-item">Professor</a></li>
 				</ul>
 			</nav>
 		</header>	

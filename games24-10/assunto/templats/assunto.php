@@ -58,6 +58,8 @@
 					</thead>
 					<tbody>
 						<?php 
+							if($num > 0) {
+						
 								foreach($assuntos as $campo => $valor){
 								echo "
 									<tr>
@@ -67,6 +69,12 @@
 										<td><a href='?dcod={$campo}' class='adel'>Deletar</a></td>
 										<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>
 									</tr>";
+								}
+							}else{
+								echo " 	<tr>
+											<td colspan='5'><center>Nenhum resultado encontrado</center></td>
+										</tr>";							
+							
 							}
 						?>
 					</tbody>

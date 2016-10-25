@@ -4,6 +4,18 @@ require('../db/db.php');
 
 $msg = '';
 $result = '';
+// ----------------------------------------------------------------------PAGINA ----------------------------------------------------------------------------
+$query = odbc_exec($db, "SELECT 
+								codArea,
+								descricao
+							FROM
+								Area
+							");
+$num = odbc_num_rows($query);
+$numPagina = $num%10;
+$i = 0;
+if(!isset($_GET['pg']))$pagina = 1;else $pagina = intval($_GET['pg']);
+$limite = (10 * $pagina); 
 
 // --------------------------------------------------------------------Pesquisa --------------------------------------------------------------------
 if(isset($_POST['btnPesquisar'])) {
@@ -12,6 +24,7 @@ if(isset($_POST['btnPesquisar'])) {
 			// Criar um função para evitar injection
 
 			$query = odbc_exec($db, "SELECT 
+									TOP $limite
 										codArea, 
 										descricao 
 									FROM 
@@ -20,6 +33,7 @@ if(isset($_POST['btnPesquisar'])) {
 			$butt = "<button id='btnVoltar' name='btnVoltar'><a href='index.php'>Voltar</a></button>";
 	} else {
 		$query = odbc_exec($db, 'SELECT 
+								TOP $limite
 									codArea,
 									descricao
 								FROM 
@@ -27,16 +41,19 @@ if(isset($_POST['btnPesquisar'])) {
 	}
 } else {
 	// Valor default
-	$query = odbc_exec($db, 'SELECT 
+	$query = odbc_exec($db, "SELECT 
+							TOP $limite
 								codArea,
 								descricao
 							FROM 
-								Area');
+								Area
+							");
 }
 
-
-
 //-------------------------------------------------------------------- Exibe na grade--------------------------------------------------------------------
+
+
+$num = odbc_num_rows($query);
 while($result = odbc_fetch_array($query)){
 	$areas[$result['codArea']] = utf8_encode($result['descricao']);
 }
@@ -50,8 +67,8 @@ if(isset($_GET['dcod'])){
 									FROM 
 										Assunto 
 									WHERE codArea='.$_GET['dcod']);
-		$num = odbc_num_rows($descricao);
-		if($num > 0){
+		$numDec = odbc_num_rows($descricao);
+		if($numDec > 0){
 			$msg = "Não foi possivel deletar <br> A area possui dependencia com o(s) campo(s): ";
 			while($pega = odbc_fetch_array($descricao)){
 				$msg .= "".$pega['descricao'].", ";

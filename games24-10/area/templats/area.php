@@ -24,6 +24,19 @@
 			</div>
 
 			<section id="form-content">
+						<?php 
+
+				echo " <ul> ";
+					do{
+						$i++;
+						echo " <li><a href='?pg=$i'>$i</a></li>";					
+					}while($i < $numPagina);
+					
+				echo "</ul>";
+						
+				
+
+			?>
 				<h3>Cadastro da área</h3>
 
 				<!-- Campo de pesquisa -->	
@@ -58,6 +71,7 @@
 					</thead>
 					<tbody>
 						<?php 
+						if($num > 0){
 							foreach($areas as $campo => $value){
 								echo "
 									<tr>
@@ -67,11 +81,17 @@
 										<td><a href='?ecod={$campo}' class='aedit' class='lightbox'>Editar</a></td>
 									</tr>" ;
 							}
+						}else{
+							echo " 	<tr>
+										<td colspan='5'><center>Nenhum resultado encontrado</center></td>
+									</tr>";
+						}
 						?>
 					</tbody>
 				</table>
-			</div><!-- area-content - Fim -->
 		</div><!-- frmarea - Fim -->
+		</div><!-- area-content - Fim -->
+
 		<!---- scripts ---->
 		<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="../js/scripts.js"></script>

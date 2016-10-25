@@ -27,7 +27,7 @@ if(isset($_POST['btnPesquisar'])){
 							FROM
 								Professor");
 }	
-							
+$num = odbc_num_rows($query);							
 while($result = odbc_fetch_array($query)){
 		
 	$prof[$result['codProfessor']]['nome'] = utf8_encode($result['nome']);	
