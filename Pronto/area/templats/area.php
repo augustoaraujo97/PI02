@@ -37,6 +37,8 @@
 								echo "<input type='text' name='pesq' id='pesq' value='".$pesquisa."'>";
 								//$butt recebe o botão btnVoltar, botão cujo papel é dar refresh na pagina
 								echo $butt;
+							}else{
+								echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
 							}
 						}else{
 							echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
@@ -45,7 +47,7 @@
 					?>
 					<input type="submit" id="btnPesquisar" value="Pesquisar"/>
 				</form>
-				<form id="frma" action=""  method="post">
+				<form id="frma" action="?sm"  method="post">
 					<input type="submit" id="btnNovo" class="btnNovo" name="btnNovo" value="Incluir" /> 
 				</form>
 				
@@ -89,7 +91,8 @@
 							}
 						}else{
 							echo " 	<tr>
-										<td colspan='5'><center>Nenhum resultado encontrado</center></td>
+										
+										<td colspan='5'><center> :( Nenhum resultado encontrado.</center></td>
 									</tr>";
 						}
 						?>

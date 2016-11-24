@@ -37,7 +37,7 @@
 					echo "		
 							</select>
 							<label class='label-default'>Descrição:</label>
-							<input type='text' name='txtAssuntoUpdate'  class='style-input-default' value='".$result['assdescricao']."'/>
+							<input type='text' name='txtAssuntoUpdate'  class='style-input-default' value='".$result['assdescricao']."' />
 							
 							<input type='submit' name='btnAssuntoUpdate' class='btArea' value='Enviar' />
 							<a href='index.php'><input type='button' name='btnVolt' class='btArea' value='Cancelar'/></a>

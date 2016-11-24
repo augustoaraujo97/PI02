@@ -1,10 +1,11 @@
 <?php
 require('../acesso.php');
 require('../db/db.php');
-include ("../db/msg.php");
+
 $msg = '';
 $result = ' ';
 
+include ("../db/msg.php");
 // ----------------------------------------------------------------------PAGINA ----------------------------------------------------------------------------
 if(isset($_GET['pesq'])){
 	$pesquisa = $_GET['pesq'];
@@ -150,18 +151,34 @@ if(isset($_GET['dcod'])){
 // -------------------------------------------------------------------------------INSERT ------------------------------------------------------------------------
 if(isset($_POST['btnInclude'])) {
 	$assunto = $_POST['txtInclude'];
-	$assunto = preg_replace("/[^a-zA-Z0-9 -]/",'',$_POST['txtInclude']);
+	$assunto = preg_replace("/[^a-zA-Z0-9 -]/",'',@$_POST['txtInclude']);
 	$codArea = intval($_POST['codArea']);
 
-	$prepare = odbc_prepare($db, "INSERT INTO 
-									Assunto (descricao, codArea) 
-								VALUES 
-									(?, $codArea)");
-	if(!odbc_execute($prepare, array($assunto))){
-		$msg = "Não foi possivel inserir";
+	$queryCod = odbc_exec($db,"SELECT codArea FROM Area WHERE codArea = '$codArea'");
 
-	}else {
-		header("Location: index.php?ic");
+	if(!odbc_num_rows($queryCod) > 0){
+		$msg .= "Area inexistente";
+	}else{ 
+		if(!empty($assunto)){
+			$queryAssunto = odbc_exec($db, "SELECT descricao, codArea FROM Assunto WHERE descricao = '$assunto' AND codArea = $codArea");
+			
+			if(odbc_num_rows($queryAssunto) > 0){
+				$msg .= "Assunto já cadastrado nessa área";
+			}else{
+				$prepare = odbc_prepare($db, "INSERT INTO 
+												Assunto (descricao, codArea) 
+											VALUES 
+												(?, $codArea)");
+				if(!odbc_execute($prepare, array($assunto))){
+					$msg = "Não foi possivel inserir";
+
+				}else {
+					header("Location: index.php?ic");
+				}
+			}
+		}else{
+			$msg .= "Não é possivel inserir assuntos em branco.";
+		}
 	}
 }
 
@@ -209,8 +226,9 @@ if(isset($_POST['btnAssuntoUpdate']  )){
 $msg = utf8_encode($msg);
 if(isset($_POST['btnNovo']) || isset($_GET['ecod']) ){
 	include_once("templats/crudAssunto.php");
-}else{
-	include("templats/assunto.php");	
 }
+
+include("templats/assunto.php");	
+
 
 ?>

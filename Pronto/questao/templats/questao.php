@@ -39,10 +39,10 @@
 								//$butt recebe o botão btnVoltar, botão cujo papel é dar refresh na pagina
 								echo $butt;
 							}else{
-								echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
+								echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descriÃ§Ã£o ...">';
 							}
 						}else{
-							echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
+							echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descriÃ§Ã£o ...">';
 							
 						}
 					?>				
@@ -76,29 +76,36 @@
 					<tbody>
 						<?php 
 							if (isset($questao)){
-								foreach($questao as $campo => $value){
-									echo "
-										<tr>
-											<td class='cmcodigo'>{$campo}</td>
-											<td class='cmdescricao'>{$value['textoQuestao']}</td>
-											<td class='cmdescricao'>{$value['descricao']}</td>";
-										if($value['bitmapImagem'] != 0 || !empty($value['bitmapImagem'])){
-											echo "<td class='cmdescricao'><img width='100%' src='data:image/jpeg;base64,".base64_encode($value['bitmapImagem'])."' /></td>";
-										}else{
-											echo "<td class='cmdescricao'></td>";
-										}
-										echo"<td class='cmdescricao'>{$value['nome']}</td>
-											 <td class='cmdescricao'>{$value['dificult']}</td>";
-										if($_SESSION['codProfessor'] == $value['codProfessor'] || $_SESSION['tipoProfessor'] == 'A'){
-											echo "
-												<td><a href='?dcod={$campo}' class='adel'>Desativar</a></td>
-												<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>";
-										}else{
-											echo "<td colspan='2'><center>".utf8_encode("Você não tem acesso")."</center></td>";
-										}
-										echo "</tr>";
-								}
+								
+									foreach($questao as $campo => $value){
+										echo "
+											<tr>
+												<td class='cmcodigo'>{$campo}</td>
+												<td class='cmdescricao'>{$value['textoQuestao']}</td>
+												<td class='cmdescricao'>{$value['descricao']}</td>";
+											if($value['bitmapImagem'] != 0 || !empty($value['bitmapImagem'])){
+												echo "<td class='cmdescricao'><img width='100%' src='data:image/jpeg;base64,".base64_encode($value['bitmapImagem'])."' /></td>";
+											}else{
+												echo "<td class='cmdescricao'></td>";
+											}
+											echo"<td class='cmdescricao'>{$value['nome']}</td>
+												 <td class='cmdescricao'>{$value['dificult']}</td>";
+											if($_SESSION['codProfessor'] == $value['codProfessor'] || $_SESSION['tipoProfessor'] == 'A'){
+												echo "
+													<td><a href='?dcod={$campo}' class='adel'>Desativar</a></td>
+													<td><a href='?ecod={$campo}' class='aedit'>Editar</a></td>";
+											}else{
+												echo "<td colspan='2'><center>VocÃª nÃ£o tem acesso</center></td>";
+											}
+											echo "</tr>";
+									}
+							}else{
+								echo " 	<tr>
+											
+											<td colspan='5'><center> :( Nenhum resultado encontrado.</center></td>
+										</tr>";
 							}
+							
 						?>
 					</tbody>
 				</table>

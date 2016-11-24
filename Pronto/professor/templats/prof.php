@@ -29,10 +29,10 @@
 								//$butt recebe o botão btnVoltar, botão cujo papel é dar refresh na pagina
 								echo $butt;
 							}else{
-								echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
+								echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descriÃ§Ã£o ...">';
 							}
 						}else{
-							echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descrição ...">';
+							echo '<input type="text" name="pesq" id="pesq" placeholder="Pesquisar descriÃ§Ã£o ...">';
 							
 						}
 					?>

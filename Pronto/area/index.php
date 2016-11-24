@@ -140,17 +140,26 @@ if(isset($_GET['dcod'])){
 if(isset($_POST['btnInclude'])) {
 	$area = $_POST['txtInclude'];
 	$area = preg_replace("/[^a-zA-Z0-9 -]/",'',$_POST['txtInclude']);
+	$verifica = odbc_exec($db, "SELECT codArea FROM Area WHERE descricao = '$area'");
 	
-	$prepare = odbc_prepare($db, "INSERT INTO 
-									Area (descricao) 
-								  VALUES 
-									(?)");
-	
-	if(!odbc_execute($prepare, array($area))){
-							
-		$msg .= "Não foi possivel inserir";
-	}else {
-		header("Location: index.php?ic");
+	if(odbc_num_rows($verifica) > 0){
+		$msg .= "Area já cadastrada";
+	}else{
+		if(!empty($area)){
+			$prepare = odbc_prepare($db, "INSERT INTO 
+											Area (descricao) 
+										  VALUES 
+											(?)");
+			
+			if(!odbc_execute($prepare, array($area))){
+									
+				$msg .= "Não foi possivel inserir";
+			}else {
+				header("Location: index.php?ic");
+			}
+		}else{
+			$msg .= "Não foi possivel inserir. Campo em branco.";
+		}
 	}
 }
 
@@ -174,19 +183,22 @@ if(isset($_POST['btnAlterar']  )){
 	if(is_numeric($_GET['ecod'])){
 		$area = $_POST['txtDescricao'];
 		$area = preg_replace("/[^a-zA-Z0-9 -]/",'',$_POST['txtDescricao']);
-		
-		$prepare = odbc_prepare($db, "UPDATE 
-										Area 
-									  SET 
-										descricao = ? 
-									  WHERE 
-									   codArea = {$_GET['ecod']}");
-		
-		if(odbc_execute($prepare, array($area))){
-			header("Location: index.php?uc");
+		if(!empty($area)){
+			$prepare = odbc_prepare($db, "UPDATE 
+											Area 
+										  SET 
+											descricao = ? 
+										  WHERE 
+										   codArea = {$_GET['ecod']}");
+			
+			if(odbc_execute($prepare, array($area))){
+				header("Location: index.php?uc");
+			}else{
+				$msg .= "Não foi possível atualizar";
+			}
+		}else{
+			$msg .= "Não é possivel atualizar para a descricao para em branco";
 		}
-	}else{
-		$msg .= "Não foi possível atualizar";
 	}
 }
 
@@ -194,7 +206,7 @@ if(isset($_POST['btnAlterar']  )){
 $msg = utf8_encode($msg);
 if(isset($_POST['btnNovo']) || isset($_GET['ecod']) ){
 	include_once('templats/crudArea.php');	
-}else{
-	include_once('templats/area.php');	
 }
+include_once('templats/area.php');	
+
 ?>

@@ -90,7 +90,7 @@ if(isset($_GET['dcod'])){
 										FROM 
 											Questao as prof
 										WHERE 
-											codProfessor = ' . $_GET['ecod']]);
+											codProfessor = ' . $_GET['ecod']);
 			
 			if(odbc_num_rows($questao) > 0) {
 				$msg .= 'Professor em dependência em questões';
