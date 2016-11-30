@@ -1,0 +1,1 @@
+<?php if(empty($acesso)) header("Location: ../index.php"); ?>
